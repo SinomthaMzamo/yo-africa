@@ -7,6 +7,18 @@
     font-family: "Poppins", sans-serif;
 }
 
+:root{
+    --clr-background: bisque;
+    --clr-white: #ffffff;
+    --clr-primary: #2d5b3e;
+    --clr-dark-gray: #263238;
+    --clr-light-gray: #eceff1;
+
+    --font-size: 16px;
+    --border-radius: 0.2en;
+    --center: 0.5
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -25,6 +37,7 @@ body {
     border-radius: 10px;
     padding: 30px 40px;
     transition: all 0.5s ease;
+    position: absolute;
 }
 
 .wrapper h1 {
