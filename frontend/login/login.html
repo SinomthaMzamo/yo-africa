@@ -13,8 +13,8 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+        import { getDatabase, set, ref, get } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -54,17 +54,65 @@
                         username: username,
                         email: email
                     });
-                    alert("User created!");
+
+                    // Alert user about successful registration
+                    alert("User created successfully! You can now login.");
+
+                    // Optionally, clear the form fields or reset the form
+                    registerForm.reset(); // Reset the form after successful registration
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
                     alert(errorMessage);
                 });
             });
+
+            // Login form submission handler
+            const loginForm = document.getElementById('login-form');
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get user input values
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+
+                // Find user by username to get email
+                get(ref(database, 'users'))
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const users = snapshot.val();
+                        const user = Object.values(users).find(u => u.username === username);
+                        if (user) {
+                            const email = user.email;
+
+                            // Sign in with email and password
+                            signInWithEmailAndPassword(auth, email, password)
+                            .then((userCredential) => {
+                                // Logged in successfully
+                                alert("Logged in successfully as " + user.username);
+                                // Redirect to the dashboard page
+                                window.location.href = "../dashboard/dashboard.html";
+                            })
+                            .catch((error) => {
+                                const errorMessage = error.message;
+                                alert(errorMessage);
+                            });
+                        } else {
+                            // User not found
+                            alert("User not found. Please check your credentials.");
+                        }
+                    } else {
+                        // No users found
+                        alert("User not found. Please check your credentials.");
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Error retrieving user data. Please try again later.");
+                });
+            });
         });
     </script>
-    <!-- Linking to external JavaScript file for additional login functionalities -->
-    <script type="module" src="../js/login.js"></script>
 </head>
 <body>
     <!-- Background container with logos -->
@@ -103,7 +151,7 @@
 
     <!-- Login form container -->
     <div class="wrapper" id="login-form">
-        <form action="">
+        <form>
             <h1>Login</h1>
             <!-- Username input field -->
             <div class="input-box">
@@ -131,7 +179,7 @@
 
     <!-- Register form container, initially hidden -->
     <div class="wrapper" id="register-form" style="display: none;">
-        <form action="">
+        <form>
             <h1>Register</h1>
             <!-- Full Name input field -->
             <div class="input-box">
@@ -163,7 +211,7 @@
 
     <!-- Forgot Password form container, initially hidden -->
     <div class="wrapper" id="forgot-password-form" style="display: none;">
-        <form action="">
+        <form>
             <h1>Forgot Password</h1>
             <!-- Email Address input field -->
             <div class="input-box">
