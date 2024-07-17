@@ -207,9 +207,18 @@ body{
     display: flex;
     flex-direction: column;
     flex: wrap;
+    justify-content: space-between;
     padding: 2em;
     font-size: 2em;
     color: var(--clr-dark-gray)
+}
+
+.section{
+    margin-top: 1em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .name-container-big{
@@ -247,16 +256,19 @@ body{
 
 .feature-container{
     display:flex;
-    gap: 3em;
-    padding-top: 4em;
+    gap: 2em;
+    padding-top: 2.5em;
     padding-left: 0px;
+    position:relative;
+    flex-direction: column;
 }
 
 .feature-gallery{
     display: flex;
     flex: wrap;
-    gap: 1em;
-    justify-content: space-around;
+    gap: 2em;
+    justify-content: center;
+
 
 }
 
@@ -288,8 +300,8 @@ body{
     padding: 0.4em;
     display: flex;
     justify-content: center;
-    height: 8.6em;
-    width: 5.9em;
+    height: 9em;
+    width: 6.4em;
     font-size:1em;
     background: var(--clr-complement);
     border-radius: var(--border-radius);
