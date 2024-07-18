@@ -7,6 +7,18 @@
     font-family: "Poppins", sans-serif;
 }
 
+:root {
+    --clr-background: #2d5b3e;
+    --clr-white: #ffffff;
+    --clr-primary: #2d5b3e;
+    --clr-dark-gray: #263238;
+    --clr-light-gray: #eceff1;
+    --clr-complement: #c1a187;
+    --font-size: 16px;
+    --border-radius: 0.2em;
+    --center: 0.5;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -124,4 +136,114 @@ body {
 .login-link p a:hover,
 .forgot-link p a:hover {
     text-decoration: underline;
+}
+
+nav {
+    width: 100%;
+    background: var(--clr-primary);
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 10px;
+    position: relative;
+}
+
+a {
+    color: var(--clr-light-gray);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    padding: 15px 20px;
+    position: relative;
+    display: block;
+}
+
+a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Dropdown Styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--clr-primary);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: var(--clr-light-gray);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--clr-dark-gray);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+#menu-toggle:checked + ul {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    li {
+        text-align: center;
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+        color: var(--clr-light-gray);
+    }
 }

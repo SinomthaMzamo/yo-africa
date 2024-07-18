@@ -121,39 +121,30 @@
     </script>
 </head>
 <body>
-    <!-- Background container with logos -->
-    <div class="background-container">
-        <div class="logo-row">
-            <a href="../landing/landing.html">
-                <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            </a>
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-        </div>
-        <div class="logo-row">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-        </div>
-        <div class="logo-row">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-        </div>
-        <div class="logo-row">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-            <img src="../assets/logo-water-mark.png" alt="logo-water-mark">
-        </div>
-    </div>
+
+    <nav class="nav-bar">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">&#9776;</label>
+        <ul>
+            <li><a href="../landingv2/index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#news">News</a>
+                <ul class="dropdown-content" id="news-links">
+                    <li><a href="../news/news.html">Latest</a></li>
+                    <li><a href="#remedies">All News</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#features">Services</a>
+                <ul class="dropdown-content" id="feature-links">
+                    <li><a href="../locator/locator.html">Locator</a></li>
+                    <li><a href="../library/library.html">Remedies</a></li>
+                    <li><a href="../symptom-tracker/symptom-tracker.html">Symptom Tracker</a></li>
+                    <li><a href="../library/library.html">Yo grow</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 
     <!-- Login form container -->
     <div class="wrapper" id="login-form">
