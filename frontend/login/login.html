@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="../css/login.css">
     <!-- Linking to Google Fonts for custom font styles -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
-
     <!-- Firebase Configuration Script -->
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-        import { getDatabase, set, ref, get } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
+        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
         // Your web app's Firebase configuration
@@ -37,11 +36,18 @@
             const registerForm = document.getElementById('register-form');
             registerForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-                
+
                 // Get user input values
                 const email = document.getElementById("register-email").value;
                 const password = document.getElementById("register-password").value;
+                const confirmPassword = document.getElementById("register-confirm-password").value;
                 const username = document.getElementById("register-username").value;
+
+                // Check if passwords match
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match. Please try again.");
+                    return;
+                }
 
                 // Create a new user with email and password
                 createUserWithEmailAndPassword(auth, email, password)
@@ -196,6 +202,11 @@
                 <input type="password" id="register-password" placeholder="Password" required>
                 <i class="bx bxs-lock-open-alt"></i>
             </div>
+            <!-- Confirm Password input field -->
+            <div class="input-box">
+                <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                <i class="bx bxs-lock-open-alt"></i>
+            </div>
             <!-- Terms and conditions checkbox -->
             <div class="remember-forgot">
                 <label><input type="checkbox" required>I agree with all terms and conditions</label>
@@ -226,8 +237,8 @@
             </div>
         </form>
     </div>
-    
-    <!-- Linking to external JavaScript file for additional login functionalities -->
+
+    <!-- External JavaScript file for additional functionality -->
     <script src="../js/login.js"></script>
 </body>
 </html>
