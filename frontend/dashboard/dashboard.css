@@ -5,6 +5,18 @@
   
   
   }
+
+  :root {
+    --clr-background: #2d5b3e;
+    --clr-white: #ffffff;
+    --clr-primary: #2d5b3e;
+    --clr-dark-gray: #263238;
+    --clr-light-gray: #d2a4c1;
+    --clr-complement: #c1a187;
+    --font-size: 16px;
+    --border-radius: 0.4em;
+    --center: 0.5;
+}
   
   .user-img {
     width : 50px;
@@ -19,7 +31,8 @@
     left: 0;
     height: 100vh;
     width: 80px;
-    background-color: #12171e;
+    background-color: var(--clr-background);
+    border-radius: var(--border-radius);
     padding: 0.4rem 0.8rem;
     transition: all 0.5s ease;
   }
@@ -47,6 +60,36 @@
   .sidebar.active #btn{
     left: 90%;
   }
+
+  .avatar-box{
+    height: auto;
+    width: 30%;
+  }
+
+  .avatar-box a img{
+    width: 100%;
+    height: 100;
+    object-fit: cover;
+  }
+
+  .sidebar .tab-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 45%;
+    gap: 2px;
+  }
+
+  .sidebar .tab-container .news-tab{
+    display: flex;
+    height: 5%;
+    width: 100%;
+    border: 10px red;
+    background:#c1a187;
+    border-radius: 2em;
+    justify-content: center;
+  }
   
   .sidebar .top .logo{
     color: #fff;
@@ -56,6 +99,10 @@
     align-items: center;
     pointer-events: none;
     opacity: 0;
+  }
+
+  .sidebar .top{
+    border: 10px red;
   }
   
   .sidebar.active .top .logo{
