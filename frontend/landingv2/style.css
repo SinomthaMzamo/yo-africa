@@ -202,7 +202,7 @@ feature-gallery a:hover:after {
 }
 
 .about-us-container{
-    background: var(--clr-light-gray);
+    background: var(--clr-primary);
     display: flex;
     flex-direction: column;
     flex: wrap;
@@ -312,5 +312,4 @@ section {
 .transition-container{
     width: vw;
     height: 8em;
-    background: linear-gradient(to bottom, var(--clr-primary) 15%, var(--clr-light-gray) 100%, var(--clr-light-gray));
 }
