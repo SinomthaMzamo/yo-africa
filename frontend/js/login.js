@@ -15,3 +15,13 @@ function showForgotPasswordForm() {
     document.getElementById('register-form').style.display = 'none';
     document.getElementById('forgot-password-form').style.display = 'block';
 }
+
+function togglePassword(id) {
+    const passwordField = document.getElementById(id);
+    const type = passwordField.type === 'password' ? 'text' : 'password';
+    passwordField.type = type;
+    // Optionally, change the button text
+    const button = passwordField.nextElementSibling;
+    button.textContent = type === 'password' ? 'Show' : 'Hide';
+}
+
