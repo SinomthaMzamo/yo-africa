@@ -1,0 +1,364 @@
+/**
+ * For displaying a image grid of news articles
+ */
+/*--------------------------------------------------------------
+# Parent Grid
+--------------------------------------------------------------*/
+.news-grid {
+  z-index: 1;
+  transition: .5s;
+}
+
+@supports (display: flex) {
+  @media (min-width: 767px) {
+    .news-grid {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# Link Containers
+--------------------------------------------------------------*/
+.news-grid .block-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: .5em 0;
+}
+
+.news-grid .block-link.darken {
+  background: #000;
+}
+
+.news-grid .block-link.contain {
+  min-height: 235px;
+}
+
+@media (min-width: 767px) {
+  .news-grid .block-link {
+    margin: 1em 0;
+  }
+  .news-grid .block-link.contain {
+    min-height: 378px;
+  }
+  @supports (object-fit: cover) {
+    .news-grid .block-link img {
+      object-fit: cover;
+    }
+    .news-grid .block-link.contain img {
+      min-height: 378px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .news-grid .block-link.contain {
+    min-height: 285px;
+  }
+  @supports (object-fit: cover) {
+    .news-grid .block-link.contain img {
+      object-fit: cover;
+    }
+    .news-grid .block-link.contain img {
+      min-height: 285px;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# # Link Containers --> Images
+--------------------------------------------------------------*/
+.news-grid .block-link img {
+  transition: .3s;
+  width: 100%;
+  height: auto;
+}
+
+.news-grid .block-link:hover img,
+.news-grid .block-link:focus img {
+  transform: scale(1.1);
+}
+
+.news-grid .block-link.darken img {
+  opacity: .5;
+}
+
+@supports (filter: brightness(50%)) {
+  .news-grid .block-link.darken img {
+    opacity: 1;
+    filter: brightness(50%);
+  }
+}
+
+/*--------------------------------------------------------------
+# # Link Containers --> Headings
+--------------------------------------------------------------*/
+.news-grid .block-link.contain.darken .heading-4 {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  padding: 10px;
+}
+
+@media (min-width: 767px) {
+  .news-grid .block-link.contain .heading-4 {
+    padding: 1em;
+  }
+}
+
+/* Make them tall enough that they all clear and there's no
+ * floating below issues */
+@media (min-width: 768px) {
+  .news-grid .heading-6 {
+    min-height: 5em;
+  }
+}
+
+/* Not an issue in flexbox */
+@supports (display: flex) {
+  .news-grid .heading-6 {
+    min-height: 0;
+  }
+}
+
+.news-grid hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+/* No margins for the MDL card images */
+.block-link.mdl-card__media {
+  margin: 0;
+}
+
+.slick-next:before, .slick-prev:before {
+  color: #797979;
+  font-family: FontAwesome;
+  font-size: 40px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 1300px) {
+  .slick-next {
+    right: -50px;
+  }
+  .slick-prev {
+    left: -50px;
+  }
+}
+
+.slick-prev:before {
+  content: "\f053";
+}
+
+.slick-next:before {
+  content: "\f054";
+}
+
+.loader {
+  position: absolute;
+  z-index: 999;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  opacity: 1;
+}
+
+.loader + #mdl {
+  opacity: .5;
+}
+
+.mdl-card .button {
+  border: 1px solid #cdcdcd;
+}
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * @package Material Design Lite (mdl)
+ * @author Google Inc.
+ * @link https://getmdl.io/components/index.html#cards-section
+ */
+/**
+ * Modified for BATheme2017
+ */
+.mdl-card {
+  display: flex;
+  flex-direction: column;
+  /*font-size: 16px;*/
+  font-weight: 400;
+  min-height: 200px;
+  overflow: hidden;
+  /*width: 330px;*/
+  z-index: 1;
+  position: relative;
+  background: white;
+  border-radius: 2px;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+.mdl--shadow {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mdl--border {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.mdl-card__media {
+  background-color: #212c21;
+  background-repeat: repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-origin: padding-box;
+  background-attachment: scroll;
+  box-sizing: border-box;
+}
+
+.mdl-card__media img {
+  width: 100%;
+  height: auto;
+}
+
+.mdl-card__title {
+  align-items: center;
+  color: black;
+  display: block;
+  display: flex;
+  line-height: normal;
+  padding: 16px 16px;
+  perspective-origin: 165px 56px;
+  transform-origin: 165px 56px;
+  box-sizing: border-box;
+}
+
+.mdl-card__title.mdl-card--border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mdl-card__title-text {
+  align-self: flex-end;
+  color: inherit;
+  display: block;
+  display: flex;
+  /*font-size: 24px;*/
+  /*font-weight: 300;*/
+  line-height: normal;
+  overflow: hidden;
+  transform-origin: 149px 48px;
+  margin: 0;
+}
+
+.mdl-card__subtitle-text {
+  /*font-size: 14px;*/
+  color: rgba(0, 0, 0, 0.54);
+  margin: 0;
+}
+
+.mdl-card__supporting-text {
+  color: rgba(0, 0, 0, 0.54);
+  /*font-size: 1rem;
+  line-height: 18px;*/
+  overflow: hidden;
+  padding: 16px 16px;
+  width: 90%;
+}
+
+.mdl-card__supporting-text.mdl-card--border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mdl-card__actions {
+  /*font-size: 16px;*/
+  line-height: normal;
+  width: 100%;
+  background-color: transparent;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.mdl-card__actions.mdl-card--border {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mdl-card--expand {
+  flex-grow: 1;
+}
+
+.mdl-card__menu {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+/*--------------------------------------------------------------
+# BA Custom | Horizontal Cards
+--------------------------------------------------------------*/
+@media (min-width: 767px) {
+  .block-link.mdl-card__media {
+    display: flex !important;
+    background: #efefef;
+    align-items: center;
+  }
+  .mdl-card--horizontal {
+    flex-direction: row;
+  }
+  /*.news-item:nth-of-type(even) .mdl-card--horizontal{
+    flex-direction: row-reverse;
+  }*/
+  .block-link.mdl-card__media {
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 50%;
+  }
+}
+
+.button--wide {
+  padding: .75em 3em;
+}
+
+.button {
+  border: 2px solid;
+  background: transparent;
+  line-height: 1;
+  padding: .5em 1em;
+  display: inline-block;
+  color: inherit;
+  transition: .3s;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.center {
+  text-align: center;
+}
