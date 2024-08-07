@@ -4,54 +4,51 @@
 /**
   * Base Settings/Overwrite Normalize
   */
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 body {
   font-family: "Inconsolata", monospace;
-  font-feature-settings: 'liga' 0;
+  font-feature-settings: "liga" 0;
   font-size: 100%;
   line-height: 1.6;
 }
-
 @media (min-width: 20em) {
   body {
     font-size: 102.5%;
   }
 }
-
 @media (min-width: 30em) {
   body {
     font-size: 105%;
   }
 }
-
 @media (min-width: 54em) {
   body {
     font-size: 107.5%;
   }
 }
-
 @media (min-width: 64em) {
   body {
     font-size: 110%;
   }
 }
-
 @media (min-width: 76.5em) {
   body {
     font-size: 115%;
   }
 }
-
 @media (min-width: 114em) {
   body {
     font-size: 125%;
   }
 }
 
-h1, h2 {
+h1,
+h2 {
   margin: 0;
   font-family: "Space Mono", monospace;
 }
@@ -61,7 +58,6 @@ h1, h2 {
     font-size: 3em;
   }
 }
-
 @media (min-width: 76.5em) {
   h1 {
     font-size: 3.5em;
@@ -77,7 +73,6 @@ a {
   text-decoration: none;
   transition: color 0.4s ease-in-out;
 }
-
 a:hover, a:active, a:focus {
   color: #9f8f68;
 }
@@ -95,6 +90,11 @@ ul {
 /**
   * Text Selection
   */
+::-moz-selection {
+  color: #fff;
+  background-color: #9f8f68;
+  text-shadow: none;
+}
 ::selection {
   color: #fff;
   background-color: #9f8f68;
@@ -119,7 +119,7 @@ ul {
 /**
   * Letter Spacing
   */
-.tabs, .previews__container span, .preview__more, .card__more, .footer__archive {
+.footer__archive, .card__more, .preview__more, .previews__container span, .tabs {
   font-family: "Space Mono", monospace;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -128,8 +128,8 @@ ul {
 /**
   * Black Color Overlay
   */
-.previews > *:first-child:after, .card__img:after {
-  content: '';
+.card__img:after, .previews > *:first-child:after {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -156,11 +156,9 @@ section {
 .section-padding {
   padding: 4em 0;
 }
-
 .section-padding--lg {
   padding: 6em 0;
 }
-
 .section-padding--sm {
   padding: 2em 0;
 }
@@ -168,7 +166,7 @@ section {
 /**
   * Class Container (BEM)
   */
-[class*='__container'] {
+[class*=__container] {
   position: relative;
   z-index: 1;
 }
@@ -182,13 +180,11 @@ section {
     flex-direction: column;
   }
 }
-
 .previews > *:first-child {
   position: relative;
   height: 30em;
   background-color: #0a0a0a;
 }
-
 @media (min-width: 54em) {
   .previews > *:first-child {
     position: fixed;
@@ -198,11 +194,9 @@ section {
     width: 45%;
   }
 }
-
 .previews > *:last-child {
   min-height: 100vh;
 }
-
 @media (min-width: 54em) {
   .previews > *:last-child {
     margin-left: 45%;
@@ -218,32 +212,27 @@ section {
   justify-content: space-around;
   padding: 1em;
 }
-
 @media (min-width: 54em) {
   .tabs {
     padding-left: 8em;
     padding-right: 8em;
   }
 }
-
 @media (min-width: 114em) {
   .tabs {
     padding-left: 10em;
     padding-right: 10em;
   }
 }
-
 .tabs__item {
   cursor: pointer;
 }
-
 .tabs__item:not(.active) {
   position: relative;
   color: #0a0a0a;
 }
-
 .tabs__item:not(.active):after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -251,11 +240,9 @@ section {
   border-bottom: 3px solid #9f8f68;
   transition: width 0.4s ease-in-out;
 }
-
 .tabs__item:not(.active):hover:after {
   width: 100%;
 }
-
 .tabs__item.active {
   border-bottom: 3px solid #9f8f68;
 }
@@ -279,7 +266,6 @@ section {
   padding: 2em;
   color: #fff;
 }
-
 .previews__container span {
   font-family: "Inconsolata", monospace;
 }
@@ -287,57 +273,46 @@ section {
 .preview {
   transition: background-color 0.2s ease-in-out;
 }
-
 .preview:nth-child(even) {
   background-color: #fff;
 }
-
 .preview:hover {
   background-color: #f5f3ef;
 }
-
 .preview:hover .preview__more {
   box-shadow: inset 175px 0 0 0 #9f8f68;
   color: #fff;
 }
-
 .preview__img {
   will-change: opacity;
   animation: fade-in 1s both;
 }
-
 .preview__link {
   display: block;
   padding: 2em 1em;
 }
-
 @media (min-width: 54em) {
   .preview__link {
     padding: 4em 8em;
   }
 }
-
 @media (min-width: 114em) {
   .preview__link {
     padding-left: 10em;
     padding-right: 10em;
   }
 }
-
 .preview__date {
   font-family: "Space Mono", monospace;
   color: #0a0a0a;
 }
-
 .preview__header {
   color: #9f8f68;
   margin-bottom: 0.5em;
 }
-
 .preview__excerpt {
   color: #0a0a0a;
 }
-
 .preview__more {
   display: inline-block;
   padding: 0.5em;
@@ -358,27 +333,23 @@ section {
   flex-flow: wrap;
   padding: 2em 1em;
 }
-
 .cards > * {
   padding: 0.25em;
   flex-basis: 100%;
   max-width: 100%;
 }
-
 @media (min-width: 54em) {
   .cards > * {
     flex-basis: 50%;
     max-width: 50%;
   }
 }
-
 @media (min-width: 114em) {
   .cards > * {
-    flex-basis: 33.33333%;
-    max-width: 33.33333%;
+    flex-basis: 33.3333333333%;
+    max-width: 33.3333333333%;
   }
 }
-
 @media (min-width: 54em) {
   .cards {
     padding: 4em 2em;
@@ -392,10 +363,9 @@ section {
   background-color: #fff;
   transition: background-color 0.2s ease-in-out;
 }
-
 .card__link:after {
   box-shadow: 0 3px 6px rgba(10, 10, 10, 0.1), 0 3px 6px rgba(10, 10, 10, 0.2);
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -405,38 +375,30 @@ section {
   will-change: opacity;
   transition: opacity 0.4s ease-in-out;
 }
-
 .card__link:hover {
   background-color: #f5f3ef;
 }
-
 .card__link:hover:after {
   opacity: 1;
 }
-
 .card__link:hover .card__more {
   box-shadow: inset 175px 0 0 0 #9f8f68;
   color: #fff;
 }
-
 .card__img {
   position: relative;
   height: 12em;
   background-color: #0a0a0a;
 }
-
 .card__container {
   padding: 2em 1em;
 }
-
 .card__header {
   color: #9f8f68;
 }
-
 .card__count {
   color: #0a0a0a;
 }
-
 .card__more {
   display: inline-block;
   padding: 0.25em;
@@ -458,20 +420,17 @@ section {
   padding-left: 2em;
   padding-right: 2em;
 }
-
 @media (min-width: 30em) {
   .footer {
     flex-direction: row;
   }
 }
-
 .footer__archive {
   position: relative;
   color: #0a0a0a;
 }
-
 .footer__archive:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -479,22 +438,18 @@ section {
   border-bottom: 3px solid #9f8f68;
   transition: width 0.4s ease-in-out;
 }
-
 .footer__archive:hover:after {
   width: 100%;
 }
-
 .footer__social {
   display: flex;
   margin-top: 1em;
 }
-
 @media (min-width: 30em) {
   .footer__social {
     margin-top: 0;
   }
 }
-
 .footer__social > *:not(:last-child) {
   margin-right: 1em;
 }
@@ -510,7 +465,6 @@ section {
     opacity: 1;
   }
 }
-
 .fade-in {
   will-change: opacity;
   animation: fade-in 2s both;
@@ -539,4 +493,4 @@ section {
 
 .bg-white {
   background-color: #fff;
-}
+}/*# sourceMappingURL=remedies.css.map */
