@@ -1,103 +1,157 @@
-// Full blog theme demo and download available at http://thomasvaeth.com/trophy/
-var Tabs = (function() {
-    var s;
-  
-    return {
-      settings: {
-        tabs: document.getElementsByClassName('tabs__item'),
-        tab: document.getElementsByClassName('tab')
-      },
-  
-      init: function() {
-        s = this.settings;
-        this.display();
-        this.click();
-      },
-  
-      display: function() {
-        if (s.tab.length) {
-          [].forEach.call(s.tab, function(tab) {
-            tab.style.display = 'none';
-          });
-          s.tab[0].style.display = 'block';
-          s.tab[0].classList.add('active');
-          s.tabs[0].classList.add('active');
-        }
-      },
-  
-      click: function() {
-        if (s.tabs.length) {
-          var currentIdx = 0,
-              prevIdx = currentIdx;
-  
-          [].forEach.call(s.tabs, function(tab, idx) {
-            tab.addEventListener('click', function() {
-              prevIdx = currentIdx;
-              currentIdx = idx;
-  
-              if (prevIdx !== currentIdx) {
-                s.tab[prevIdx].style.display = 'none';
-                s.tab[prevIdx].classList.remove('active');
-                s.tabs[prevIdx].classList.remove('active');
-                s.tab[currentIdx].style.display = 'block';
-                s.tab[currentIdx].classList.add('active');
-                s.tabs[currentIdx].classList.add('active');
-              }
-            });
-          });
-        }
-      }
-  
+import { Main, Title, Button, CardHeader, CardBody, Card } from './components';
+// Temporarily store data here
+
+const PostsData = [{
+        "category": "News",
+        "title": "CNN Acquire BEME",
+        "text": "CNN purchased Casey Neistat's Beme app for $25 million.",
+        "image": "https://source.unsplash.com/user/erondu/600x400"
+    },
+    {
+        "category": "Travel",
+        "title": "Nomad Lifestyle",
+        "text": "Learn our tips and tricks on living a nomadic lifestyle",
+        "image": "https://source.unsplash.com/user/_vickyreyes/600x400"
+    },
+    {
+        "category": "Development",
+        "title": "React and the WP-API",
+        "text": "The first ever decoupled starter theme for React & the WP-API",
+        "image": "https://source.unsplash.com/user/ilyapavlov/600x400"
+    },
+    {
+        "category": "News",
+        "title": "CNN Acquire BEME",
+        "text": "CNN purchased Casey Neistat's Beme app for $25 million.",
+        "image": "https://source.unsplash.com/user/erondu/600x400"
+    },
+    {
+        "category": "Travel",
+        "title": "Nomad Lifestyle",
+        "text": "Learn our tips and tricks on living a nomadic lifestyle",
+        "image": "https://source.unsplash.com/user/_vickyreyes/600x400"
+    },
+    {
+        "category": "Development",
+        "title": "React and the WP-API",
+        "text": "The first ever decoupled starter theme for React & the WP-API",
+        "image": "https://source.unsplash.com/user/ilyapavlov/600x400"
     }
-  })();
-  
-  var Preview = (function() {
-    var s;
-  
-    return {
-      settings: {
-        img: document.getElementsByClassName('preview__img'),
-        post: document.getElementsByClassName('preview')
-      },
-  
-      init: function() {
-        s = this.settings;
-        this.display();
-        this.mouseenter();
-      },
-  
-      display: function() {
-        if (s.img.length) {
-          [].forEach.call(s.img, function(img) {
-            img.style.display = 'none';
-          });
-          s.img[0].style.display = 'block';
-        }
-      },
-  
-      mouseenter: function() {
-        if (s.post.length) {
-          var currentIdx = 0,
-              prevIdx = currentIdx;
-  
-          [].forEach.call(s.post, function(preview, idx) {
-            preview.addEventListener('mouseenter', function() {
-              prevIdx = currentIdx;
-              currentIdx = idx;
-  
-              if (prevIdx !== currentIdx) {
-                s.img[prevIdx].style.display = 'none';
-                s.img[currentIdx].style.display = 'block';
-              }
-            });
-          });
-        }
-      }
+];
+
+// Start App
+class Remedies extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            posts: []
+        };
     }
-  })();
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    Tabs.init();
-    Preview.init();
-  });
-  
+
+    componentDidMount() {
+        this.setState({
+            posts: PostsData
+        });
+    }
+
+    render() {
+        return ( <
+            div >
+            <
+            header className = "app-header" > < /header> <
+            Title / >
+            <
+            div className = "app-card-list"
+            id = "app-card-list" > {
+                this.state.posts.map((post, index) => ( <
+                    Card key = { index }
+                    details = { post }
+                    />
+                ))
+            } <
+            /div> < /
+            div >
+        );
+    }
+}
+
+class Title extends React.Component {
+    render() {
+        return ( <
+            section className = "app-title" >
+            <
+            div className = "app-title-content" >
+            <
+            h1 > Latest News < /h1> <
+            p > Covering March & April 2015 < /p> <
+            a className = "designer-link"
+            href = "https://dribbble.com/shots/1978243-Latest-News"
+            target = "_blank"
+            rel = "noopener noreferrer" >
+            Design from < i className = "fa fa-dribbble" > < /i> < /
+            a > <
+            /div> < /
+            section >
+        );
+    }
+}
+
+class Button extends React.Component {
+    render() {
+        return ( <
+            button className = "button button-primary" >
+            <
+            i className = "fa fa-chevron-right" > < /i> Find out more < /
+            button >
+        );
+    }
+}
+
+class CardHeader extends React.Component {
+    render() {
+        const { image, category } = this.props;
+        const style = {
+            backgroundImage: `url(${image})`,
+        };
+        return ( <
+            header style = { style }
+            className = "card-header" >
+            <
+            h4 className = "card-header--title" > { category } < /h4> < /
+            header >
+        );
+    }
+}
+
+class CardBody extends React.Component {
+    render() {
+        return ( <
+            div className = "card-body" >
+            <
+            p className = "date" > March 20, 2015 < /p> <
+            h2 > { this.props.title } < /h2> <
+            p className = "body-content" > { this.props.text } < /p> <
+            Button / >
+            <
+            /div>
+        );
+    }
+}
+
+class Card extends React.Component {
+    render() {
+        return ( <
+            article className = "card" >
+            <
+            CardHeader category = { this.props.details.category }
+            image = { this.props.details.image }
+            /> <
+            CardBody title = { this.props.details.title }
+            text = { this.props.details.text }
+            /> < /
+            article >
+        );
+    }
+}
+
+ReactDOM.render( < Main / > , document.getElementById('app'));
