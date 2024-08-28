@@ -13,7 +13,7 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
         import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -61,15 +61,21 @@
                         email: email
                     });
 
-                    // Alert user about successful registration
-                    alert(" successful registration! .");
+                    // Send verification email
+                    sendEmailVerification(user)
+                    .then(() => {
+                        alert("Registration successful! A verification email has been sent to your email address. Please verify your email before logging in.");
+                    })
+                    .catch((error) => {
+                        console.error("Error sending verification email:", error);
+                        alert("Error sending verification email. Please try again.");
+                    });
 
-                    // Optionally, clear the form fields or reset the form
-                    registerForm.reset(); // Reset the form after successful registration
+                    registerForm.reset();
                 })
                 .catch((error) => {
-                    const errorMessage = error.message;
-                    alert(errorMessage);
+                    console.error("Error during registration:", error);
+                    alert(error.message);
                 });
             });
 
@@ -94,16 +100,19 @@
                             // Sign in with email and password
                             signInWithEmailAndPassword(auth, email, password)
                             .then((userCredential) => {
-                                // Logged in successfully
-                                alert("Logged in successfully  " + user.username);
-                                // Redirect to the dashboard page
-                                window.location.href = "../dashboard/dashboard.html";
+                               // Check if the user's email is verified
+                                if (userCredential.user.emailVerified) {
+                                    alert("Logged in successfully, " + user.username);
+                                    window.location.href = "../dashboard/dashboard.html";
+                                } else {
+                                    alert("Please verify your email before logging in.");
+                                }
                             })
                             .catch((error) => {
-                                const errorMessage = error.message;
-                                alert(errorMessage);
+                                console.error("Error during login:", error);
+                                alert(error.message);
                             });
-                        } else {
+                            } else {
                             // User not found
                             alert("User not found. Please check your credentials.");
                         }

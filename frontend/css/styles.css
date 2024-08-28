@@ -1,0 +1,22 @@
+/* styles.css */
+.bot-message {
+    background-color: #2c5b3d; /* Your specified color */
+    color: #ffffff; /* Text color for better contrast */
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0;
+  }
+  
+  .user-message {
+    background-color: #ffffff;
+    color: #2c5b3d; /* Your specified color */
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0;
+  }
+  
+  .chat-container {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
