@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo-Africa</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="top"></div>
+        <div class="logo">
+            <i class="bx bxl-codepen"></i>
+            <span>Yo-Africa</span>
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+        <div class="profile-box"></div>
+        <div class="avatar-box">
+            <a href="">
+                <img src="../assets/account-icon-complement.png" alt="avatar">
+            </a>
+        </div>
+        <div class="tab-container">
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+            <div class="news-tab">NEWS</div>
+        </div>
+
+
+      
+    </div>
+    <div class="user">
+        <img src="pexels-venus-14598678.jpg" alt="me" class="user-img">
+        <div>
+            <p class="bold">Clint B.</p>
+            <p>Admin</p>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="#">
+                <i class="bx bx-cog"></i>
+                <span class="nav-item">Settings</span>
+
+            </a>
+            <span class="tooltip">Settings</span>
+
+
+        </li>
+    </ul>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <h1>Yo-Africa</h1>
+        </div>
+    </div>
+</body>
+<script>
+    let btn = document.querySelector('#btn');
+    let sidebar = document.querySelector('.sidebar');
+
+    btn.onclick = function() {
+        sidebar.classList.toggle('active');
+    };
+</script>
+
+</html>

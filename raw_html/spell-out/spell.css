@@ -1,0 +1,19 @@
+.spelling {
+    display: inline-block;
+    overflow: hidden;
+    border-right: .15em solid orange; /* Cursor effect */
+    white-space: nowrap; /* Prevent the text from wrapping */
+    margin: 0 auto; /* Center the text */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: typing 3.5s steps(59, end), blink-caret .45s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}

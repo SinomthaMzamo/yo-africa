@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yoafrica user login</title>
+    <!-- Linking to external CSS stylesheet for styling the login page -->
+    <link rel="stylesheet" href="../css/login.css">
+    <!-- Linking to Google Fonts for custom font styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <!-- Firebase Configuration Script -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAB8UqHg3lF9_mQa1bgoPF9YCVJfGXfGp4",
+            authDomain: "yongama-africa.firebaseapp.com",
+            databaseURL: "https://yongama-africa-default-rtdb.firebaseio.com",
+            projectId: "yongama-africa",
+            storageBucket: "yongama-africa.appspot.com",
+            messagingSenderId: "515657059476",
+            appId: "1:515657059476:web:4aea1d6a5ba6e92b49f881"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Register form submission handler
+            const registerForm = document.getElementById('register-form');
+            registerForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get user input values
+                const email = document.getElementById("register-email").value;
+                const password = document.getElementById("register-password").value;
+                const confirmPassword = document.getElementById("register-confirm-password").value;
+                const username = document.getElementById("register-username").value;
+
+                // Check if passwords match
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match. Please try again.");
+                    return;
+                }
+
+                // Create a new user with email and password
+                createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+
+                    // Set user data in the database
+                    set(ref(database, 'users/' + user.uid), {
+                        username: username,
+                        email: email
+                    });
+
+                    // Alert user about successful registration
+                    alert("User created successfully! You can now login.");
+
+                    // Optionally, clear the form fields or reset the form
+                    registerForm.reset(); // Reset the form after successful registration
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                });
+            });
+
+            // Login form submission handler
+            const loginForm = document.getElementById('login-form');
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get user input values
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+
+                // Find user by username to get email
+                get(ref(database, 'users'))
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const users = snapshot.val();
+                        const user = Object.values(users).find(u => u.username === username);
+                        if (user) {
+                            const email = user.email;
+
+                            // Sign in with email and password
+                            signInWithEmailAndPassword(auth, email, password)
+                            .then((userCredential) => {
+                                // Logged in successfully
+                                alert("Logged in successfully as " + user.username);
+                                // Redirect to the dashboard page
+                                window.location.href = "../dashboard/dashboard.html";
+                            })
+                            .catch((error) => {
+                                const errorMessage = error.message;
+                                alert(errorMessage);
+                            });
+                        } else {
+                            // User not found
+                            alert("User not found. Please check your credentials.");
+                        }
+                    } else {
+                        // No users found
+                        alert("User not found. Please check your credentials.");
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Error retrieving user data. Please try again later.");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">&#9776;</label>
+        <ul>
+            <li><a href="../landingv2/index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#news">News</a>
+                <ul class="dropdown-content" id="news-links">
+                    <li><a href="../news/news.html">Latest</a></li>
+                    <li><a href="#remedies">All News</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#features">Services</a>
+                <ul class="dropdown-content" id="feature-links">
+                    <li><a href="../locator/locator.html">Locator</a></li>
+                    <li><a href="../library/library.html">Remedies</a></li>
+                    <li><a href="../symptom-tracker/symptom-tracker.html">Symptom Tracker</a></li>
+                    <li><a href="../library/library.html">Yo grow</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Login form container -->
+    <div class="wrapper" id="login-form">
+        <form>
+            <h1>Login</h1>
+            <!-- Username input field -->
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <!-- Password input field -->
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class="bx bxs-lock-open-alt"></i>
+            </div>
+            <!-- Remember me checkbox and Forgot password link -->
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#" onclick="showForgotPasswordForm()">Forgot password?</a>
+            </div>
+            <!-- Login button -->
+            <button type="submit" id="login-submit" class="btn">Login</button>
+            <!-- Link to register form -->
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" onclick="showRegisterForm()">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Register form container, initially hidden -->
+    <div class="wrapper" id="register-form" style="display: none;">
+        <form>
+            <h1>Register</h1>
+            <!-- Full Name input field -->
+            <div class="input-box">
+                <input type="text" id="register-username" placeholder="Full Name" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <!-- Email Address input field -->
+            <div class="input-box">
+                <input type="email" id="register-email" placeholder="Email Address" required>
+                <i class="bx bxs-envelope"></i>
+            </div>
+            <!-- Password input field -->
+            <div class="input-box">
+                <input type="password" id="register-password" placeholder="Password" required>
+                <i class="bx bxs-lock-open-alt"></i>
+            </div>
+            <!-- Confirm Password input field -->
+            <div class="input-box">
+                <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                <i class="bx bxs-lock-open-alt"></i>
+            </div>
+            <!-- Terms and conditions checkbox -->
+            <div class="remember-forgot">
+                <label><input type="checkbox" required>I agree with all terms and conditions</label>
+            </div>
+            <!-- Register button -->
+            <button type="submit" id="register-submit" class="btn">Register</button>
+            <!-- Link to login form -->
+            <div class="login-link">
+                <p>Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Forgot Password form container, initially hidden -->
+    <div class="wrapper" id="forgot-password-form" style="display: none;">
+        <form>
+            <h1>Forgot Password</h1>
+            <!-- Email Address input field -->
+            <div class="input-box">
+                <input type="email" id="forgot-email" placeholder="Email Address" required>
+                <i class="bx bxs-envelope"></i>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" id="forgot-submit" class="btn">Submit</button>
+            <!-- Link to login form -->
+            <div class="login-link">
+                <p>Remember your password? <a href="#" onclick="showLoginForm()">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- External JavaScript file for additional functionality -->
+    <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+:root {
+    --clr-background: #2d5b3e;
+    --clr-white: #ffffff;
+    --clr-primary: #2d5b3e;
+    --clr-dark-gray: #263238;
+    --clr-light-gray: #eceff1;
+    --clr-complement: #c1a187;
+    --font-size: 16px;
+    --border-radius: 0.2em;
+    --center: 0.5;
+}
+
+
+.footer {
+    background-color: var(--clr-background);
+    color: #fff;
+    margin: 10em 5em 0 5em;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+/*  max-width: 1200px;*/
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin-top: 1px;
+  padding-top: 1px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.footer-links a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

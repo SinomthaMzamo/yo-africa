@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px;
+}
+
+:root {
+    --clr-background: #2d5b3e;
+    --clr-white: #ffffff;
+    --clr-primary: #2d5b3e;
+    --clr-dark-gray: #263238;
+    --clr-light-gray: #eceff1;
+    --clr-complement: #c1a187;
+    --font-size: 16px;
+    --border-radius: 0.2em;
+    --center: 0.5;
+}
+
+body, html {
+    margin-top:25px ;
+    margin-bottom: 25px;
+    padding: 20px;
+    font: bold 14px/1.4 'Poppins', Arial, sans-serif;
+    background: var(--clr-primary);
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+
+/* styling for buttons and locator search bar */
+
+.searchButtonsAndBar {
+/*    border: 2px solid #ddd; */
+    margin: 1.5em;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.filterButtons {
+    /* border: 2px solid #ddd; */
+    display: flex;
+    gap: 2.5em;
+}
+
+.locatorSearchBar {
+    margin: 2px;
+    padding: 10px;
+    border: 2px solid #ddd; /* Light gray border */
+    border-radius: 35px; /* Fully rounded corners */
+    outline: none; /* Removes default focus outline */
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #2c2c2c;
+    width: 300px;
+    max-height: 45px;
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.locatorSearchBar:focus,
+.locatorSearchBar:hover {
+    border-color: #c1a187; /* Change border color on focus */
+    box-shadow: 0 0 10px #c1a187; /* Add a subtle shadow on focus */
+}
+
+.locatorSearchBar::placeholder {
+color: #aaa; /* Light gray color for placeholder text */
+font-style: italic; /* Italicize the placeholder text */
+}
+
+button { 
+border-radius: 8px;
+border: 1px solid transparent;
+padding: 0.6em 1.2em;
+font-size: 1em;
+font-weight: 500;
+font-family: inherit;
+max-width: 115px;
+/*  background-color: #1a1a1a;*/
+cursor: pointer;
+transition: border-color 0.25s;
+}
+
+button:hover {
+border-color: #c1a187;
+}
+
+button:focus,
+button:focus-visible { 
+outline: 4px auto -webkit-focus-ring-color;
+}
+
+input[type="checkbox"] {
+    accent-color: #c1a187; /* Modern browsers support accent-color property */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 300;
+    color: whitesmoke;
+    padding: 7px;
+}
+ 
+/* map styling */
+.map {
+border-radius: 12px;
+margin: 2em;
+/*  padding: 2em;*/
+border: 4px solid whitesmoke;
+display: flex;
+justify-content: end;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #2d5b3e;
+    }
+    a:hover {
+        color: #c1a187;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
+}

@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
+
+.iconBox:hover {
+  transform: scale(1.2);
+}
+
+.iconBox {
+  position: absolute;
+  /* inset: 0.625rem; */
+  background: #2d5b3e;
+  border-radius: 50%;
+  right: 10px;
+  bottom: 10px;
+  align-items: center;
+  transition: 0.3s;
+  text-decoration: none;
+  z-index: 1000;
+  height: fit-content;
+  width: auto;
+}
+
+.iconBox span {
+  color: #fff;
+  font-size: 45px;
+}

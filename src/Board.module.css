@@ -1,0 +1,17 @@
+.dashboard-layout {
+    display: flex;
+}
+
+#dashboard-container {
+    padding: 20px;
+    /* border: 5px solid green; */
+    display: grid;
+    min-width: 40rem;               /* add 14rem for ea featurecard on display */
+    max-height: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    background-color: lightgray; /* Optional: Sets a background color */
+    height: fit-content;
+    
+}
