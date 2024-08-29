@@ -1,0 +1,23 @@
+:root {
+    --clr-background: #2d5b3e;
+    --clr-white: #ffffff;
+    --clr-primary: #2d5b3e;
+    --clr-dark-gray: #263238;
+    --clr-light-gray: #eceff1;
+    --clr-complement: #c1a187;
+    --clr-light-complement: #e0c8b4;
+    --font-size: 16px;
+    --border-radius: 0.2em;
+    --center: 0.5;
+}
+
+
+.profile-update-form {
+    display: flex;
+    height: 80%;
+    width: fit-content;
+    border: 2px solid white;
+    border-radius: 5px;
+    justify-content: space-between;
+    background-color: var(--clr-light-complement) ;
+}

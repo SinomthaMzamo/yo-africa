@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
+import { getAuth, signOut } from "firebase/auth";
 import styles from "./Sidebar.module.css";
 import logoImg from "./assets/logo-named.png"
 
-const Sidebar = () => {
+const Sidebar = ({onViewChange}) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
+  };
+
+  const handleLogout = (event) => {
+    event.preventDefault(); // Prevent the default anchor tag behavior
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        console.log("User logged out");
+        // Redirect to the login page or homepage
+        window.location.href = "/home";
+      })
+      .catch((error) => {
+        console.error("Error logging out: ", error);
+      });
   };
 
   return (
@@ -22,7 +37,7 @@ const Sidebar = () => {
       </h3>
       <ul className={styles.sidebarMenu}>
         <li>
-          <a href="/nursery">
+          <a href="#" onClick={() => onViewChange("Profile")}>
             <span className="material-symbols-outlined">person</span>
             {!isCollapsed && <span>Profile</span>}
           </a>
@@ -64,7 +79,7 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="/profile">
+          <a href="/home" onClick={handleLogout}>
             <span className="material-symbols-outlined">logout</span>
             {!isCollapsed && <span>Log Out</span>}
           </a>
