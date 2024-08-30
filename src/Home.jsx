@@ -89,14 +89,14 @@ const Home = () => {
               textColour='#303030'
               onClick={() => handleButtonClick(institutions)}
           ></Button>
-          <h1> Step 1: Click on 'Sign Up' and Start Your Journey! ✨🖱️</h1>
-          <h3>Locate the vibrant ‘Sign Up’ button on our homepage. This is your first step to unlocking a world of
-            personalized health resources, exciting features, and a supportive community.</h3>
-          <h1> Step 2: Enter Your Details and Create Your Unique Profile! 📝🔑</h1>
-          <h3>Fill in your essential details, including your name, email address, and a secure password. Choose a strong
-            password to keep your account safe and sound!</h3>
-          <h1> Step 3: Dive into Your New Health Hub! 🌍🌟</h1>
-          <h3>Explore our features like ‘Yo Locator,’ ‘Symptom Checker,’ and the ‘Yo Library.’ Start interacting with our chatbot, browse through our health news, and begin your journey towards a healthier you!</h3>
+          <h6 style={{fontSize: '0.6em', fontWeight: '600', marginBottom:'0.7em'}}> Step 1: Click on 'Sign Up' and Start Your Journey! ✨🖱️</h6>
+          <p style={{fontSize: '0.5em', fontWeight: '500' , marginBottom:'2em'}}>Locate the vibrant ‘Sign Up’ button on our homepage. This is your first step to unlocking a world of
+            personalized health resources, exciting features, and a supportive community.</p>
+          <h6 style={{fontSize: '0.6em', fontWeight: '600', marginBottom:'0.7em'}}> Step 2: Enter Your Details and Create Your Unique Profile! 📝🔑</h6>
+          <p style={{fontSize: '0.5em', fontWeight: '500', marginBottom:'2em'}}>Fill in your essential details, including your name, email address, and a secure password. Choose a strong
+            password to keep your account safe and sound!</p>
+          <h6 style={{fontSize: '0.6em', fontWeight: '600', marginBottom:'0.7em'}}> Step 3: Dive into Your New Health Hub! 🌍🌟</h6>
+          <p style={{fontSize: '0.5em', fontWeight: '500', marginBottom:'2em'}}>Explore our features like ‘Yo Locator,’ ‘Symptom Checker,’ and the ‘Yo Library.’ Start interacting with our chatbot, browse through our health news, and begin your journey towards a healthier you!</p>
         </div>
     );
   };
