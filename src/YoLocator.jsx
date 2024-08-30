@@ -32,7 +32,7 @@ function YoLocator() {
 
   // Define the base style for the container
   const baseContainerStyle = {
-    maxWidth: '1200px',
+    maxWidth: '95vw',
     margin: '0 auto',
     padding: '20px',
     backgroundColor: '#2d5b3e',

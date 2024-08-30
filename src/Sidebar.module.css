@@ -83,20 +83,20 @@
 /*  align-items: center;*/
   margin-bottom: 20px;
   transition: opacity 0.3s ease;
-  color: white;
 }
 .sidebarMenu li a:visited {
-  color: #2d5b3e;
-  background-color: white;
-}
-
-.sidebarMenu li a:hover {
-  transform: scale(1.11);
-  color: #2d5b3e;
+  color: white;
 }
 
 .sidebarMenu li:hover {
+    transform: scale(1.11);
     background-color: white;
+    color: #2d5b3e;
+}
+
+.sidebarMenu li a:hover {
+    transform: scale(1.11);
+    color: #2d5b3e;
 }
 
 .sidebarMenu li a:hover:visited {
@@ -105,9 +105,6 @@
   background-color: white;
 }
 
-.sidebarMenu li a:after{
-    color: white;
-}
 
 .sidebarMenu li a span:first-child {
   margin-right: 10px;

@@ -76,7 +76,7 @@ const Home = () => {
   };
 
   const container = {
-    maxWidth: '1200px',
+    minWidth: '95vw',
     margin: '0 auto',
     padding: '20px',
     backgroundColor: '#2d5b3e',

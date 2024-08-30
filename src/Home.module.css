@@ -6,10 +6,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif; /* Changed font-family to Poppins */
+
 }
 
 main {
+  font-family: "Poppins", sans-serif; /* Changed font-family to Poppins */
   background-color: #2D5B3E;
   color: #c7c7c7c9;
   display: grid;

@@ -15,7 +15,7 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-h1 {
+.title {
     text-align: center;
     color: #c1a187;
     font-size: 2rem;

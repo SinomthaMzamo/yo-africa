@@ -27,7 +27,7 @@ function YoTracker() {
 
   /* Container Utility Class */
   const container = {
-            maxWidth: "1200px", /* This is the maximum width it can stretch */
+            minWidth: "96vw", /* This is the maximum width it can stretch */
             margin: "0 auto", /* This centers the container on the page */
             padding: "20px", /* Adds some space inside the container */
             backgroundColor: "#2d5b3e", /* Background color for the container */

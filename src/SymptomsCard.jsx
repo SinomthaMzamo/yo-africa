@@ -53,7 +53,7 @@ const SymptomsCard = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Symptom Checker</h1>
+      <h1 className={styles.title}>Symptom Checker</h1>
       <form id={styles.symptomForm} onSubmit={handleSubmit}>
         <label htmlFor={styles.symptoms}>Enter your symptoms (separated by commas):</label>
         <textarea

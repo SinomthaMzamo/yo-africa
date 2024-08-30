@@ -68,7 +68,7 @@ color: #aaa; /* Light gray color for placeholder text */
 font-style: italic; /* Italicize the placeholder text */
 }
 
-button { 
+.filterBtn {
 border-radius: 8px;
 border: 1px solid transparent;
 padding: 0.6em 1.2em;
@@ -76,17 +76,18 @@ font-size: 1em;
 font-weight: 500;
 font-family: inherit;
 max-width: 115px;
-/*  background-color: #1a1a1a;*/
+box-shadow: 0 0 5px #c1a187; /* Add a subtle shadow on focus */
+    /*  background-color: #1a1a1a;*/
 cursor: pointer;
 transition: border-color 0.25s;
 }
 
-button:hover {
+.filterBtn:hover {
 border-color: #c1a187;
 }
 
-button:focus,
-button:focus-visible { 
+.filterBtn:focus,
+.filterBtn:focus-visible {
 outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -120,7 +121,7 @@ justify-content: end;
     a:hover {
         color: #c1a187;
     }
-    button {
+    .filterBtn {
         background-color: #f9f9f9;
     }
 }

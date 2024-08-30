@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import LoginForm from "./LoginForm"
 import RegisterForm from "./RegisterForm"
 import ForgotPasswordForm from "./ForgotPasswordForm"
 import bodyStyle from './LoginForms.module.css'
+import NavBar from "./NavBar.jsx";
 
 const Login = () => {
 	const [visibleForm, setVisibleForm] = useState('login');
@@ -35,6 +36,7 @@ const Login = () => {
 		<>
 		{/*show the relevant form based on current usestate*/}
 		<div className={bodyStyle.main}>
+			<NavBar feature="services" features={["library", "locator", "symptom tracker"]}/>
 			{visibleForm === 'login' && (
 	        <LoginForm 
 	          forgottenPasswordHandler={handleForgotPassword}

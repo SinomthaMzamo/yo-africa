@@ -5,6 +5,7 @@ import styles from './About.module.css'
 const About = ({featureName, subtitle, featureDescription, art:ArtComponent}) => {
     return(
         <>
+            <div className={styles.main}>
             <div className={styles.aboutUsContainer}>
                 <div className={styles.nameContainerBig}>
                     <p className={styles.boldface}>yo</p>
@@ -19,7 +20,7 @@ const About = ({featureName, subtitle, featureDescription, art:ArtComponent}) =>
                         <ArtComponent></ArtComponent>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </>
         // title
         // description
