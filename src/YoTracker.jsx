@@ -4,6 +4,30 @@ import NavBar from './NavBar'
 import Banner from './Banner'
 import About from './About'
 
+// Component to handle Botpress script injection
+const BotpressWidget = () => {
+    useEffect(() => {
+        // Create a script element for Botpress
+        const botpressScript = document.createElement('script');
+        botpressScript.src = 'https://cdn.botpress.cloud/webchat/v1/inject.js';
+        botpressScript.defer = true;
+        document.body.appendChild(botpressScript);
+
+        // Create a script element for Botpress configuration
+        const botpressConfigScript = document.createElement('script');
+        botpressConfigScript.src = 'https://mediafiles.botpress.cloud/6c88796d-2393-4cad-a7c7-0e222b7d5885/webchat/config.js';
+        botpressConfigScript.defer = true;
+        document.body.appendChild(botpressConfigScript);
+
+        // Clean up the script elements when the component unmounts
+        return () => {
+            document.body.removeChild(botpressScript);
+            document.body.removeChild(botpressConfigScript);
+        };
+    }, []);
+
+    return null; // This component does not render anything to the DOM
+};
 
 function YoTracker() {
   const featuresName = 'Quick Insights';
@@ -102,6 +126,7 @@ function YoTracker() {
             }}
         >
             <SymptomsCard/>
+            <BotpressWidget />
         </div>
 
 
