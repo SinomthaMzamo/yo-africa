@@ -6,7 +6,7 @@ const RemedyCard = ({num, title, tagLine, date, href, bgImg}) => {
           <div className={styles.num}>{num}</div>
           <a className={styles.card} href={href} style={{ '--bg-img': `url(${bgImg})` }}>
             <div>
-              <h4 className={styles.title}>{title}</h4> {/* Changed to h2 */}
+              <h5 className={styles.title}>{title}</h5> {/* Changed to h2 */}
 	          <p className={styles.tagLine}>{tagLine}</p> {/* Changed class name for clarity */}
 	          <div className={styles.date}>{date}</div>
 	          <div className={styles.tags}>

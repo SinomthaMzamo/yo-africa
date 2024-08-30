@@ -4,6 +4,10 @@ import Banner from './Banner';
 import About from './About';
 import styles from './Home.module.css';
 import feature from './assets/yoafrica feauture card.jpg';
+import remedies from './assets/remedy-clipping.png';
+import locator from './assets/locator-clipping.png';
+import bot from './assets/chatbot-clipping.png';
+import tracker from './assets/tracker-clipping.png';
 import Button from "./Button.jsx";
 
 const Home = () => {
@@ -143,16 +147,16 @@ const Home = () => {
           </div>
           <div ref={stackRef} className={styles.stack}>
             <div className={styles.card}>
-              <img src={feature} alt="Card Image 1" />
+              <img src={remedies} alt="Card Image 1" />
             </div>
             <div className={styles.card}>
-              <img src={feature} alt="Card Image 2" />
+              <img src={locator} alt="Card Image 2" />
             </div>
             <div className={styles.card}>
-              <img src={feature} alt="Card Image 3" />
+              <img src={tracker} alt="Card Image 3" />
             </div>
             <div className={styles.card}>
-              <img src={feature} alt="Card Image 4" />
+              <img src={bot} alt="Card Image 4" />
             </div>
           </div>
         </main>

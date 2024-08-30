@@ -151,11 +151,13 @@ a {
 .title {
   /* Styles for the title */
   text-transform: none;
+
 }
 
 .tagLine {
   /* Styles for the tagline */
   text-transform: none;
+  font-weight: 400;
 }
 
 .date {
