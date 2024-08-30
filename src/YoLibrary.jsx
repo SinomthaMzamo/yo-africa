@@ -1,7 +1,10 @@
+import React, { useState, useEffect, useRef } from 'react';
+
 import NavBar from './NavBar'
-import Banner from './Banner'
+// import Banner from './Banner'
 import About from './About'
 import Remedies from './Remedies'
+import './YoLibrary.css'
 
 const YoLibrary = () => {
 	const featuresName = 'Browse';
@@ -21,28 +24,82 @@ const YoLibrary = () => {
 	    );
 	};
 
+  // Use refs to track sections
+  const aboutRef = useRef(null);
+  const featuresRef = useRef(null);
+
   /* Container Utility Class */
   const container = {
-            maxWidth: "1200px", /* This is the maximum width it can stretch */
-            margin: "0 auto", /* This centers the container on the page */
-            padding: "20px", /* Adds some space inside the container */
-            backgroundColor: "#2d5b3e", /* Background color for the container */
-            borderRadius: "10px", /* Rounded corners */
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", /* A little shadow for depth */
-        }; 
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '20px',
+    backgroundColor: '#2d5b3e',
+    borderRadius: '10px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    opacity: 0,
+    transform: 'translateY(50px)',
+    transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+  }; 
+
+   // Define the visible style that will be added when the section comes into view
+  const visibleContainerStyle = {
+    opacity: 1,
+    transform: 'translateY(0)',
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const revealSection = (ref) => {
+        if (!ref.current) return;
+        
+        const sectionTop = ref.current.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight - 100) {
+          ref.current.style.opacity = 1;
+          ref.current.style.transform = 'translateY(0)';
+        }
+      };
+
+      revealSection(aboutRef);
+      revealSection(featuresRef);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial check for sections already in view
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 	return (
     <>
       <NavBar feature={featuresName} features={features}></NavBar>
-      <div style={container}>
+      {/*<div style={container}>
         <Banner/>
-      </div>
+      </div>*/}
       
-      <div style={container}><div id="about">
-      <About  featureName={featureName} subtitle={subtitle} featureDescription={featureDescription} art={ArtContents}>
-      </About></div></div>
-      <div id="features" style={container}>
-      <Remedies/></div>
+      <div 
+        ref={aboutRef}
+        style={{
+          ...container,
+          ...(aboutRef.current && aboutRef.current.style.opacity === '1' ? visibleContainerStyle : {}),
+        }}>
+          <About  featureName={featureName}
+           subtitle={subtitle} 
+           featureDescription={featureDescription} 
+           art={ArtContents}>
+          </About>
+      </div>
+      <div id="features" 
+        ref={featuresRef}
+        style={{
+          ...container,
+          ...(featuresRef.current && featuresRef.current.style.opacity === '1' ? visibleContainerStyle : {}),
+        }}>
+      <Remedies/>
+      </div>
 
     </>
   );

@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import LoginForm from "./LoginForm"
 import RegisterForm from "./RegisterForm"
 import ForgotPasswordForm from "./ForgotPasswordForm"
+import bodyStyle from './LoginForms.module.css'
 
 const Login = () => {
 	const [visibleForm, setVisibleForm] = useState('login');
@@ -33,6 +34,7 @@ const Login = () => {
 	return(
 		<>
 		{/*show the relevant form based on current usestate*/}
+		<div className={bodyStyle.main}>
 			{visibleForm === 'login' && (
 	        <LoginForm 
 	          forgottenPasswordHandler={handleForgotPassword}
@@ -49,6 +51,7 @@ const Login = () => {
 	          showLoginHandler={handleBackToLogin}
 	        />
 	      )}
+	    </div>
 		</>
 
 	);

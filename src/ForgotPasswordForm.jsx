@@ -25,6 +25,7 @@ const ForgotPasswordForm = ({ showLoginHandler }) => {
             placeholder="Email Address"
             required
           />
+          <i class="bx bxs-envelope"></i>
         </div>
         <button type="submit" id={styles["forgot-submit"]} className={styles.btn}>
           Submit

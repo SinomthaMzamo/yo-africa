@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth, database, signInWithEmailAndPassword, get, ref } from './firebaseConfig';
 import styles from './LoginForms.module.css'
 
@@ -36,6 +36,15 @@ const LoginForm = ({ forgottenPasswordHandler, registerNewUserHandler }) => {
     }
   };
 
+  useEffect (() => {
+    // add class to body tag
+    document.body.classList.add(styles.bodyStyle);
+
+    return  () => {
+      document.body.classList.remove(styles.bodyStyle);
+    };
+  }, []);
+
   return (
     <div className={styles.wrapper} id={styles["login-form"]}>
       <form onSubmit={handleSubmit}>
@@ -48,6 +57,7 @@ const LoginForm = ({ forgottenPasswordHandler, registerNewUserHandler }) => {
             placeholder="Username"
             required
           />
+          <i class="bx bxs-user"></i>
         </div>
         <div className={styles["input-box"]}>
           <input
@@ -57,6 +67,7 @@ const LoginForm = ({ forgottenPasswordHandler, registerNewUserHandler }) => {
             placeholder="Password"
             required
           />
+          <i class="bx bxs-lock-open-alt"></i>
         </div>
         <div className={styles["remember-forgot"]}>
           <label>

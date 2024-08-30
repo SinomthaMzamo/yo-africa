@@ -52,6 +52,7 @@ const RegisterForm = ({ showLoginHandler }) => {
             placeholder="Full Name"
             required
           />
+          <i class="bx bxs-user"></i>
         </div>
         <div className={styles["input-box"]}>
           <input
@@ -61,6 +62,7 @@ const RegisterForm = ({ showLoginHandler }) => {
             placeholder="Email Address"
             required
           />
+          <i class="bx bxs-envelope"></i>
         </div>
         <div className={styles["input-box"]}>
           <input
@@ -70,6 +72,7 @@ const RegisterForm = ({ showLoginHandler }) => {
             placeholder="Password"
             required
           />
+          <i class="bx bxs-lock-open-alt"></i>
         </div>
         <div className={styles["input-box"]}>
           <input
@@ -79,6 +82,7 @@ const RegisterForm = ({ showLoginHandler }) => {
             placeholder="Confirm Password"
             required
           />
+          <i class="bx bxs-lock-open-alt"></i>
         </div>
         <div className={styles["remember-forgot"]}>
           <label>
@@ -97,8 +101,8 @@ const RegisterForm = ({ showLoginHandler }) => {
             </a>
           </p>
         </div>
-        {error && <p >{error}</p>}
-        {success && <p >{success}</p>}
+        {error && <p className={styles.error}>{error}</p>}
+        {success && <p className={styles.success}>{success}</p>}
       </form>
     </div>
   );

@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px;
+}
+
+:root {
+    --clr-background: #2d5b3e;
+    --clr-white: #ffffff;
+    --clr-primary: #2d5b3e;
+    --clr-dark-gray: #263238;
+    --clr-light-gray: #eceff1;
+    --clr-complement: #c1a187;
+    --font-size: 16px;
+    --border-radius: 0.2em;
+    --center: 0.5;
+}
+
+body, html {
+    margin-top:25px ;
+    margin-bottom: 25px;
+    padding: 20px;
+    font: bold 14px/1.4 'Poppins', Arial, sans-serif;
+    background: var(--clr-primary);
+    height: 100vh;
+    scroll-behavior: smooth;
+}

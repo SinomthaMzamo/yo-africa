@@ -19,7 +19,7 @@
     --center: 0.5;
 }
 
-body {
+.main{
     display: flex;
     justify-content: center;
     align-items: center;
