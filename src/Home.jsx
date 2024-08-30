@@ -4,9 +4,14 @@ import Banner from './Banner';
 import About from './About';
 import styles from './Home.module.css';
 import feature from './assets/yoafrica feauture card.jpg';
+import Button from "./Button.jsx";
 
 const Home = () => {
   const stackRef = useRef(null);
+
+  const handleButtonClick = (category) => {
+    console.log('Button clicked:', category);
+  };
 
   useEffect(() => {
     const stack = stackRef.current;
@@ -61,17 +66,38 @@ const Home = () => {
 
   const features = ['library', 'locator', 'symptom tracker'];
 
+  const AboutArtContents = () => {
+    return <div style={{ backgroundColor: '#c1a187', height: '350px', width: 'auto' }}></div>;
+  };
+
   const ArtContents = () => {
     return (
-      <div
-        style={{
-          backgroundColor: '#c1a187',
-          height: '350px',
-          width: 'auto',
-          border: '2px solid wheat',
-          borderRadius: '15px',
-        }}
-      ></div>
+        <div
+            style={{
+              backgroundColor: '#c1a187',
+              height: '350px',
+              width: 'auto',
+              border: '2px solid wheat',
+              borderRadius: '15px',
+              fontSize: '1em',
+            }}
+        >
+          <Button
+              text={"sign up"}
+              idleColour='#84ad93'
+              hoverColour='#2d5b3e'
+              textColour='#303030'
+              onClick={() => handleButtonClick(institutions)}
+          ></Button>
+          <h1> Step 1: Click on 'Sign Up' and Start Your Journey! ✨🖱️</h1>
+          <h3>Locate the vibrant ‘Sign Up’ button on our homepage. This is your first step to unlocking a world of
+            personalized health resources, exciting features, and a supportive community.</h3>
+          <h1> Step 2: Enter Your Details and Create Your Unique Profile! 📝🔑</h1>
+          <h3>Fill in your essential details, including your name, email address, and a secure password. Choose a strong
+            password to keep your account safe and sound!</h3>
+          <h1> Step 3: Dive into Your New Health Hub! 🌍🌟</h1>
+          <h3>Explore our features like ‘Yo Locator,’ ‘Symptom Checker,’ and the ‘Yo Library.’ Start interacting with our chatbot, browse through our health news, and begin your journey towards a healthier you!</h3>
+        </div>
     );
   };
 
@@ -79,21 +105,28 @@ const Home = () => {
     minWidth: '95vw',
     margin: '0 auto',
     padding: '20px',
+    font: '10px',
     backgroundColor: '#2d5b3e',
     borderRadius: '10px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
   };
 
   return (
-    <>
-      <NavBar feature={featuresName} features={features}></NavBar>
+      <>
+        <NavBar feature={featuresName} features={features}></NavBar>
       <Banner />
       <div id="about" style={container}>
         <About
           featureName={featureName}
           subtitle={subtitle}
           featureDescription={featureDescription}
-          art={ArtContents}
+          art={AboutArtContents}
+        />
+        <About
+            featureName={"dashboard"}
+            subtitle={"create your little health hub"}
+            featureDescription={"Head over to Yo Africa and be prepared to embark on a transformative journey towards better health and well-being. Our platform is your gateway to a healthier tomorrow!"}
+            art={ArtContents}
         />
       </div>
       <div id="features" style={container}>
