@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, useLocation} from 'react-router-dom';
 import Home from './Home';
 import HtmlViewer from './HtmlViewer';
 import YoTracker from "./YoTracker";
@@ -9,8 +9,12 @@ import GoHome from "./GoHome";
 import Footer from "./Footer";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
+import NavBar from "./NavBar.jsx";
 
 const YoAfrica = () => {
+    const location = useLocation();
+    const hideFooter = location.pathname === '/news/latest';
+
     return (
         <Router>
             <>
@@ -28,7 +32,9 @@ const YoAfrica = () => {
                         <YoLibrary/>
                     </Route>
                     <Route exact path="/news/latest">
-                        <HtmlViewer filePath="/news.html" />
+                        <div>
+                        <NavBar features={["library", "locator", "symptom tracker"]} feature="services"></NavBar>
+                        <HtmlViewer filePath="/news.html" /></div>
                     </Route>
                     <Route exact path="/home/login">
                         <Login/>
@@ -42,7 +48,8 @@ const YoAfrica = () => {
                         <GoHome/>
                     </Route>
                 </Switch>
-                <Footer/>
+                {!hideFooter && <Footer />}
+                {/* Conditionally render the footer */}
             </>
         </Router>
     );

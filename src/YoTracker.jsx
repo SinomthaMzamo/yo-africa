@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import SymptomsCard from './SymptomsCard'
 import NavBar from './NavBar'
 import Banner from './Banner'
@@ -23,17 +23,56 @@ function YoTracker() {
     return(<div style={{ backgroundColor: "#c1a187", height: "350px", width: "auto", borderRadius: "12px" }}></div>
     );
   };
+
+// Use refs to track sections
+  const aboutRef = useRef(null);
+  const featuresRef = useRef(null);
     
 
   /* Container Utility Class */
   const container = {
-            minWidth: "96vw", /* This is the maximum width it can stretch */
-            margin: "0 auto", /* This centers the container on the page */
-            padding: "20px", /* Adds some space inside the container */
-            backgroundColor: "#2d5b3e", /* Background color for the container */
-            borderRadius: "10px", /* Rounded corners */
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", /* A little shadow for depth */
+      maxWidth: '95vw',
+      margin: '0 auto',
+      padding: '20px',
+      backgroundColor: '#2d5b3e',
+      borderRadius: '10px',
+      boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+      opacity: 0,
+      transform: 'translateY(50px)',
+      transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
   };
+
+    // Define the visible style that will be added when the section comes into view
+    const visibleContainerStyle = {
+        opacity: 1,
+        transform: 'translateY(0)',
+    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const revealSection = (ref) => {
+                if (!ref.current) return;
+
+                const sectionTop = ref.current.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (sectionTop < windowHeight - 100) {
+                    ref.current.style.opacity = 1;
+                    ref.current.style.transform = 'translateY(0)';
+                }
+            };
+
+            revealSection(aboutRef);
+            revealSection(featuresRef);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Initial check for sections already in view
+        handleScroll();
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
 
 
@@ -41,13 +80,29 @@ function YoTracker() {
     <>
       <NavBar feature={featuresName} features={features}></NavBar>
       <Banner/>
-      <div id="about" style={container}>
-      <About  featureName={featureName} subtitle={subtitle} featureDescription={featureDescription} art={SymptomsCard}>
-      </About></div>
-      <div id="features" style={container}>
-      <SymptomsCard /></div>
-      
-      
+        <div
+            ref={aboutRef}
+            style={{
+                ...container,
+                ...(aboutRef.current && aboutRef.current.style.opacity === '1' ? visibleContainerStyle : {}),
+            }}
+        >
+            <About
+                featureName={featureName}
+                subtitle={subtitle}
+                featureDescription={featureDescription}
+                art={ArtContents}
+            />
+        </div>
+        <div
+            ref={featuresRef}
+            style={{
+                ...container,
+                ...(featuresRef.current && featuresRef.current.style.opacity === '1' ? visibleContainerStyle : {}),
+            }}
+        >
+            <SymptomsCard/>
+        </div>
 
 
     </>

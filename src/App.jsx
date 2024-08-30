@@ -6,9 +6,9 @@ import YoAfrica from './YoAfrica.jsx'
 function App() {
 
   return (
-    <>
-      <YoAfrica/>
-    </>
+      <Router>
+          <YoAfrica />
+      </Router>
   )
 }
 

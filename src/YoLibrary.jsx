@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import NavBar from './NavBar'
-// import Banner from './Banner'
+import Banner from './Banner'
 import About from './About'
 import Remedies from './Remedies'
 import './YoLibrary.css'
@@ -76,10 +76,7 @@ const YoLibrary = () => {
 	return (
     <>
       <NavBar feature={featuresName} features={features}></NavBar>
-      {/*<div style={container}>
-        <Banner/>
-      </div>*/}
-      
+      <Banner />
       <div 
         ref={aboutRef}
         style={{

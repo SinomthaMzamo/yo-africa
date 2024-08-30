@@ -122,7 +122,7 @@ function YoLocator() {
         {displayedCategory === institutions && (
           <div className={styles.map} id={styles['institutions-map']}>
             <iframe
-              src='https://my.atlist.com/map/fd023123-a763-495a-8fab-407edf79ff0b/?share=true'
+              src="https://my.atlist.com/map/68adbf30-0635-4c06-9fd2-52889929898d/?share=true"
               allow='geolocation "self" https://my.atlist.com'
               width='100%'
               height='600px'
@@ -137,7 +137,7 @@ function YoLocator() {
         {displayedCategory === specialists && (
           <div className={styles.map} id={styles['specialists-map']}>
             <iframe
-              src='https://my.atlist.com/map/4af4ae8b-405c-4640-8a23-8372db61e9a7/?share=true'
+              src='https://my.atlist.com/map/725ed121-20a7-4845-96e0-5f526bc60d87/?share=true'
               allow='geolocation "self" https://my.atlist.com'
               width='100%'
               height='600px'

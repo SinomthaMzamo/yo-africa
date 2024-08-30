@@ -85,7 +85,7 @@ const RegisterForm = ({ showLoginHandler }) => {
           <i class="bx bxs-lock-open-alt"></i>
         </div>
         <div className={styles["remember-forgot"]}>
-          <label>
+          <label className={styles.text}>
             <input type="checkbox" required />
             I agree with all terms and conditions
           </label>

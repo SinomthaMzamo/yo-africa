@@ -70,11 +70,11 @@ const LoginForm = ({ forgottenPasswordHandler, registerNewUserHandler }) => {
           <i class="bx bxs-lock-open-alt"></i>
         </div>
         <div className={styles["remember-forgot"]}>
-          <label>
+          <label className={styles.text}>
             <input type="checkbox" />
             Remember me
-          </label>
-          <a href="#" onClick={forgottenPasswordHandler}>
+          </label >
+          <a href="#" className={styles.text} onClick={forgottenPasswordHandler}>
             Forgot password?
           </a>
         </div>

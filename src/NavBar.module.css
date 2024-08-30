@@ -10,20 +10,22 @@
     --center: 0.5;
 }
 
-body, html {
-    margin: 0;
-    font: bold 14px/1.4 'Poppins', Arial, sans-serif;
-    background: var(--clr-primary);
-    height: 100vh;
-    scroll-behavior: smooth;
-}
+/*body, html {*/
+/*    margin: 0;*/
+/*    font: bold 14px/1.4 'Poppins', Arial, sans-serif;*/
+/*    background: var(--clr-primary);*/
+/*    height: 100vh;*/
+/*    scroll-behavior: smooth;*/
+/*}*/
 
-nav {
+.nav-bar {
+    font-weight: 800;
     width: 100%;
     background: var(--clr-primary);
     padding: 2px 0;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000;
     text-align: center;
 }
@@ -43,7 +45,7 @@ nav ul li {
 
 .navLink {
     color: var(--clr-light-gray);
-    font-weight: 500;
+    font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.15em;

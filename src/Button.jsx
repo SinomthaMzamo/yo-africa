@@ -24,6 +24,7 @@ const Button = ({ text, idleColour, hoverColour, textColour, onClick}) => {
         color: textColour,
         padding: '10px',
         cursor: 'pointer',
+        borderRadius: '15px',
         transition: 'border-color, color 0.3s ease', /* Smooth transition for border color */
         boxShadow: '2px 2px 5px #2c2c2c' , /* Add a subtle shadow on focus */ 
 
