@@ -30,18 +30,19 @@ const BotpressWidget = () => {
 };
 
 function YoTracker() {
-  const featuresName = 'Quick Insights';
+  const featuresName = 'services';
   const featureName = 'symptom tracker';
   const subtitle = 'ABOUT YO TRACKER'
   const featureDescription = 'Our Symptom Tracker provides valuable insights and recommendations ' +
-                            'based on your symptoms. Use it to get quick health insights and ' +
+                            'based on your symptoms and location. Use it to get quick, relevant health insights and ' +
                             'track your symptoms effectively.';
 
 
   const tracker = 'Symptom Tracker';
   const chatBot = 'ChatBot';
 
-  const features = [tracker, chatBot];
+  const features = ["library", "locator", "symptom tracker"];
+
 
   const ArtContents = () => {
     return(<div style={{ backgroundColor: "#c1a187", height: "350px", width: "auto", borderRadius: "12px" }}></div>

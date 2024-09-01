@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import NavBar from './NavBar'
-import Banner from './Banner'
+import HtmlViewer from './HtmlViewer'
 import About from './About'
 import Remedies from './Remedies'
 import './YoLibrary.css'
 
 const YoLibrary = () => {
-	const featuresName = 'Browse';
+	const featuresName = 'services';
 	const featureName = 'library';
 	const subtitle = 'ABOUT YO LIBRARY'
 	const featureDescription = 'Yo Africa’s Library is your go-to resource for health knowledge and natural remedies. ' +
@@ -17,7 +17,7 @@ const YoLibrary = () => {
 
 
 
-	const features = ["nursery", "remedies"];
+	const features = ["library", "locator", "symptom tracker"];
 
 	const ArtContents = () => {
 	    return(<div style={{ backgroundColor: "#c1a187", height: "350px", width: "auto", borderRadius: "12px" }}></div>
@@ -76,7 +76,7 @@ const YoLibrary = () => {
 	return (
     <>
       <NavBar feature={featuresName} features={features}></NavBar>
-      <Banner />
+      {/* <HtmlViewer filePath="./secondhome/secondhome.html" /> */}
       <div 
         ref={aboutRef}
         style={{

@@ -6,14 +6,15 @@ import Banner from './Banner';
 import About from './About';
 
 function YoLocator() {
-  const featuresName = 'Find';
+  const featuresName = 'services';
   const featureName = 'locator';
   const subtitle = 'ABOUT YO LOCATOR';
   const featureDescription = 'Gives you access to a comprehensive database of institutions and specialists best suited to your needs and preferences. This feature connects you to the help you desire near you.';
   
   const institutions = 'Institutions';
   const specialists = 'Specialists';
-  const features = [institutions, specialists];
+  const features = ["library", "locator", "symptom tracker"];
+
   
   const [displayedCategory, setDisplayedCategory] = useState(null);
 

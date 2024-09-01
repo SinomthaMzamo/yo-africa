@@ -65,8 +65,8 @@ const Home = () => {
     'Yo Africa offers a variety of features to enhance your health management. ' +
     'The Locator helps you find nearby health institutions, the Symptom Tracker provides ' +
     'quick insights based on your symptoms, the News section keeps you updated with the latest ' +
-    'health information, and the Login feature leads you to your personalized dashboard for ' +
-    'managing your health details effectively.';
+    'health information, and the Login feature leads you to your personalized dashboard so ' +
+    'users can manage their own health hubs.';
 
   const features = ['library', 'locator', 'symptom tracker'];
 
@@ -128,7 +128,7 @@ const Home = () => {
         />
         <About
             featureName={"dashboard"}
-            subtitle={"create your little health hub"}
+            subtitle={"grow your little health hub"}
             featureDescription={"Head over to Yo Africa and be prepared to embark on a transformative journey towards better health and well-being. Our platform is your gateway to a healthier tomorrow!"}
             art={ArtContents}
         />

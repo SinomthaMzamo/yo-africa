@@ -73,9 +73,9 @@ const Sidebar = ({onViewChange}) => {
           </a>
         </li>
         <li>
-          <a href="/profile">
-            <span className="material-symbols-outlined">share</span>
-            {!isCollapsed && <span>Share</span>}
+          <a href="#" onClick={() => onViewChange("Symptom Tracker")}>
+            <span className="material-symbols-outlined">Search</span>
+            {!isCollapsed && <span>Symptom Tracker</span>}
           </a>
         </li>
         <li>

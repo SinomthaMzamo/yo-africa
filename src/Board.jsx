@@ -2,6 +2,7 @@ import React from 'react';
 import FeatureCard from './FeatureCard';
 import styles from "./Board.module.css";
 import UpdateProfile from './UpdateProfile';
+import SymptomsCard from './SymptomsCard';
 
 import remedyImg from "./assets/mortar.png";
 import mapImg from "./assets/map.png";
@@ -39,6 +40,10 @@ const Board = ({ view }) => {
             />
           </div>
         </div>
+      );
+    case 'Symptom Tracker':
+      return(
+        <SymptomsCard/>
       );
     default:
       return (
