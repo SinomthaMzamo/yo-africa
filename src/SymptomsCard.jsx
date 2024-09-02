@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import styles from './SymptomsCard.module.css';
+import DRemedies from './DRemedies'; // Assuming Dremedies is the component you want to render
 
 const SymptomsCard = () => {
   const [symptoms, setSymptoms] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [suggestionsVisible, setSuggestionsVisible] = useState(false);
+  const [showDremedies, setShowDremedies] = useState(false); // State to control the visibility of Dremedies
 
   const checkSymptoms = () => {
     const symptomsInput = symptoms.toLowerCase().split(',').map(s => s.trim());
@@ -44,28 +48,46 @@ const SymptomsCard = () => {
     }
 
     setDiagnosis(foundDiagnosis);
+    setLoading(false);
+    setSuggestionsVisible(true);
+    setShowDremedies(true); // Show Dremedies component after form submission
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     checkSymptoms();
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Symptom Checker</h1>
-      <form id={styles.symptomForm} onSubmit={handleSubmit}>
-        <label htmlFor={styles.symptoms}>Enter your symptoms (separated by commas):</label>
+      <p className={styles.intro}>Enter your symptoms below, and we'll provide a possible diagnosis along with helpful resources.</p>
+      <form id={styles.symptomForm} className={styles.form} onSubmit={handleSubmit}>
+        <label htmlFor={styles.symptoms} className={styles.label}>Describe Your Symptoms:</label>
         <textarea
           id={styles.symptoms}
-          rows="6"
+          className={styles.input}
+          rows="4"
           placeholder="e.g., fever, cough, headache"
+          aria-label="Enter your symptoms here"
           value={symptoms}
           onChange={(e) => setSymptoms(e.target.value)}
         ></textarea>
-        <button type="submit" className={styles.symptomChecker}>Check Diagnosis</button>
+        <button type="submit" className={styles.btn}>Check Diagnosis</button>
       </form>
-      <div className={styles.result}>{diagnosis}</div>
+      {loading && <div id={styles.loading} className={styles.loading}>Checking...</div>}
+      <div id={styles.result} className={styles.result}>{diagnosis}</div>
+      {suggestionsVisible && (
+        <div id={styles.suggestions} className={styles.suggestions}>
+          <p>Next steps:</p>
+          <ul>
+            <li><a href="#" id={styles.locatorLink} className={styles.suggestionLink}>Find nearby doctors and clinics</a></li>
+            <li><a href="#" id={styles.remediesLink} className={styles.suggestionLink}>Explore home remedies</a></li>
+          </ul>
+        </div>
+      )}
+      {showDremedies && <DRemedies />} {/* Render the Dremedies component conditionally */}
     </div>
   );
 };

@@ -1,67 +1,113 @@
-body {
-    font: bold 14px/1.4 'Poppins', Arial, sans-serif;
-    background-color: #2d5b3e;
-    margin: 0;
+/* body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2c5b3d; /* Background color for the entire page */
+    /* margin: 0;
     padding: 0;
-}
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+} */ 
 
 .container {
-    max-width: 450px;
-    margin: 50px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
 }
 
 .title {
-    text-align: center;
-    color: #c1a187;
     font-size: 2rem;
-    margin-bottom: 20px;
+    color: #2c5b3d;
+    margin-bottom: 1rem;
 }
 
-#symptomForm label {
-    display: block;
-    margin-bottom: 10px;
+.intro {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #2c5b3d;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
     font-weight: bold;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
     color: #495057;
 }
 
-textarea {
+.input {
     width: 100%;
-    padding: 15px;
-    border-radius: 6px;
+    padding: 0.75rem;
     border: 1px solid #ced4da;
-    font-size: 1rem;
-}
-
-.symptomChecker {
-    display: block;
-    min-width: 100%;
-    padding: 12px;
-    background-color: #2d5b3e;
-    border: 1px solid #c1a187;
     border-radius: 6px;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
-.symptomChecker:hover {
-    background-color: #72a24d;
+.btn {
+    background-color: #2d5b3e; /* Soft brown color */
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: #72a24d; /* Slightly darker soft brown on hover */
+}
+
+.loading {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #2c5b3d;
 }
 
 .result {
-    margin-top: 20px;
-    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f0f8ff;
+    border-left: 6px solid #2c5b3d;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-align: left;
+    display: block; /* Ensure result is visible when applicable */
+}
+
+.suggestions {
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+
+.suggestions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.suggestions li {
+    margin-bottom: 0.75rem;
+}
+
+.suggestions a {
+    color: #2c5b3d;
+    text-decoration: none;
     font-weight: bold;
-    color: #333;
-    border: 1px solid #dee2e6;
-    padding: 15px;
-    border-radius: 6px;
-    background-color: #f8f9fa;
+}
+
+.suggestions a:hover {
+    text-decoration: underline;
 }

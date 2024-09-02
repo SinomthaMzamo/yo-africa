@@ -1,4 +1,5 @@
 import styles from "./FeatureCard.module.css";
+import  {Link} from 'react-router-dom';
 
 const FeatureCard = ({ title, imageSrc, path, description }) => {
   return (
@@ -9,9 +10,9 @@ const FeatureCard = ({ title, imageSrc, path, description }) => {
             <img src={imageSrc} alt={title} />
           </div>
           <div className={styles.icon}>
-            <a href={path} className={styles.iconBox}>
+            <Link to={path} className={styles.iconBox}>
               <span className="material-symbols-outlined">arrow_forward</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

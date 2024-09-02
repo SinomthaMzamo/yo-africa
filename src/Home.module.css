@@ -80,6 +80,12 @@ main {
   transform: scale(0.98);
 }
 
+.start:hover{
+  transform: scale(0.98);
+}
+
+
+
 .stack {
     position: relative;
   }

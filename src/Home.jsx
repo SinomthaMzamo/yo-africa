@@ -1,56 +1,44 @@
-import React, { useEffect, useRef } from 'react';
-import NavBar from './NavBar';
-import Banner from './Banner';
-import About from './About';
-import styles from './Home.module.css';
-import feature from './assets/yoafrica feauture card.jpg';
+import React from 'react';
+import { useEffect, useRef } from 'react';
+import  {Link} from 'react-router-dom';
+
 import remedies from './assets/remedy-clipping.png';
 import locator from './assets/locator-clipping.png';
 import bot from './assets/chatbot-clipping.png';
 import tracker from './assets/tracker-clipping.png';
-import Button from "./Button.jsx";
+import styles from './Home.module.css';
+import './secondhome/secondhome.css'; // Import the CSS file
+import secondhomeImage from './assets/secondhomep.png'; // Import the image file
 
-const Home = () => {
+function Home() {
   const stackRef = useRef(null);
-
-  const handleButtonClick = (category) => {
-    console.log('Button clicked:', category);
-  };
-
   useEffect(() => {
     const stack = stackRef.current;
     const cards = Array.from(stack.children)
       .reverse()
       .filter((child) => child.classList.contains(styles.card));
-
     cards.forEach((card) => stack.appendChild(card));
-
     const moveCard = () => {
       const lastCard = stack.lastElementChild;
       if (lastCard.classList.contains(styles.card)) {
         lastCard.classList.add(styles.swap);
-
         setTimeout(() => {
           lastCard.classList.remove(styles.swap);
           stack.insertBefore(lastCard, stack.firstElementChild);
         }, 1200);
       }
     };
-
     let autoplayInterval = setInterval(moveCard, 4000);
-
     stack.addEventListener('click', (e) => {
       const card = e.target.closest(`.${styles.card}`);
       if (card && card === stack.lastElementChild) {
         card.classList.add(styles.swap);
-
         setTimeout(() => {
           card.classList.remove(styles.swap);
           stack.insertBefore(card, stack.firstElementChild);
         }, 1200);
       }
     });
-
     // Cleanup function to remove the interval and event listener
     return () => {
       clearInterval(autoplayInterval);
@@ -58,80 +46,42 @@ const Home = () => {
     };
   }, []);
 
-  const featuresName = 'Services';
-  const featureName = 'africa';
-  const subtitle = 'ABOUT YO AFRICA';
-  const featureDescription =
-    'Yo Africa offers a variety of features to enhance your health management. ' +
-    'The Locator helps you find nearby health institutions, the Symptom Tracker provides ' +
-    'quick insights based on your symptoms, the News section keeps you updated with the latest ' +
-    'health information, and the Login feature leads you to your personalized dashboard so ' +
-    'users can manage their own health hubs.';
-
-  const features = ['library', 'locator', 'symptom tracker'];
-
-  const AboutArtContents = () => {
-    return <div style={{ backgroundColor: '#c1a187', height: '350px', width: 'auto' }}></div>;
-  };
-
-  const ArtContents = () => {
-    return (
-        <div
-            style={{
-              backgroundColor: '#c1a187',
-              height: '350px',
-              width: 'auto',
-              border: '2px solid wheat',
-              borderRadius: '15px',
-              fontSize: '1em',
-            }}
-        >
-          <Button
-              text={"sign up"}
-              idleColour='#84ad93'
-              hoverColour='#2d5b3e'
-              textColour='#303030'
-              onClick={() => handleButtonClick(institutions)}
-          ></Button>
-          <h6 style={{fontSize: '0.6em', fontWeight: '600', marginBottom:'0.7em'}}> Step 1: Click on 'Sign Up' and Start Your Journey! ✨🖱️</h6>
-          <p style={{fontSize: '0.5em', fontWeight: '500' , marginBottom:'2em'}}>Locate the vibrant ‘Sign Up’ button on our homepage. This is your first step to unlocking a world of
-            personalized health resources, exciting features, and a supportive community.</p>
-          <h6 style={{fontSize: '0.6em', fontWeight: '600', marginBottom:'0.7em'}}> Step 2: Enter Your Details and Create Your Unique Profile! 📝🔑</h6>
-          <p style={{fontSize: '0.5em', fontWeight: '500', marginBottom:'2em'}}>Fill in your essential details, including your name, email address, and a secure password. Choose a strong
-            password to keep your account safe and sound!</p>
-          <h6 style={{fontSize: '0.6em', fontWeight: '600', marginBottom:'0.7em'}}> Step 3: Dive into Your New Health Hub! 🌍🌟</h6>
-          <p style={{fontSize: '0.5em', fontWeight: '500', marginBottom:'2em'}}>Explore our features like ‘Yo Locator,’ ‘Symptom Checker,’ and the ‘Yo Library.’ Start interacting with our chatbot, browse through our health news, and begin your journey towards a healthier you!</p>
-        </div>
-    );
-  };
-
   const container = {
     minWidth: '95vw',
     margin: '0 auto',
     padding: '20px',
     font: '10px',
-    backgroundColor: '#2d5b3e',
+    backgroundColour: '#2d5b3e',
     borderRadius: '10px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
   };
 
   return (
-      <>
-        <NavBar feature={featuresName} features={features}></NavBar>
-      <Banner />
-      <div id="about" style={container}>
-        <About
-          featureName={featureName}
-          subtitle={subtitle}
-          featureDescription={featureDescription}
-          art={AboutArtContents}
-        />
-        <About
-            featureName={"dashboard"}
-            subtitle={"grow your little health hub"}
-            featureDescription={"Head over to Yo Africa and be prepared to embark on a transformative journey towards better health and well-being. Our platform is your gateway to a healthier tomorrow!"}
-            art={ArtContents}
-        />
+    <div className="landing-page">
+      <header>
+        <div className="container">
+          <a href="#" className="logo">Yo <b>Africa</b></a>
+          <ul className="links">
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Work</li>
+            <li>Info</li>
+            <Link to='./home/login'><li className='start'>Get Started</li></Link>
+          </ul>
+        </div>
+      </header>
+      <div className="content">
+        <div className="container">
+          <div className="info">
+            <h1>Yongama ikusasa lakho</h1>
+            <p>Yo Africa seeks to bridge healthcare gaps with inclusive tech solutions. Empowering communities with reliable health info,
+              proactive care, and cultural engagement for better well-being nationwide.</p>
+            <Link to='./news/latest' style={{ textDecoration: 'none' }}><button>Explore</button></Link>
+          </div>
+          <div className="image">
+            <img src={secondhomeImage} alt="Home Page Visual" />
+          </div>
+        </div>
       </div>
       <div id="features" style={container}>
         <main>
@@ -161,8 +111,8 @@ const Home = () => {
           </div>
         </main>
       </div>
-    </>
+    </div>
   );
-};
+}
 
 export default Home;

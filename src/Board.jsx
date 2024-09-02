@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import FeatureCard from './FeatureCard';
 import styles from "./Board.module.css";
 import UpdateProfile from './UpdateProfile';
@@ -7,8 +8,15 @@ import SymptomsCard from './SymptomsCard';
 import remedyImg from "./assets/mortar.png";
 import mapImg from "./assets/map.png";
 import gardenImg from "./assets/gardening.png";
+import DRemedies from './DRemedies';
 
 const Board = ({ view }) => {
+  const [showRem, setShowRem] = useState(false);
+
+  const hideRem = (showRem) =>{
+    setShowRem(!showRem);
+  }
+
   switch (view) {
     case 'Profile':
       return (
@@ -43,7 +51,9 @@ const Board = ({ view }) => {
       );
     case 'Symptom Tracker':
       return(
+        <>
         <SymptomsCard/>
+        </>
       );
     default:
       return (
@@ -64,7 +74,7 @@ const Board = ({ view }) => {
             <FeatureCard
               title="Locator"
               imageSrc={mapImg}
-              path="/library"
+              path="/locator"
               description="Find health facilities near you."
             />
           </div>
